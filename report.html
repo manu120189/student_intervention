@@ -12351,7 +12351,7 @@ Logistic Regression I think is a good candidate because will help us to define a
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Import the three supervised learning models from sklearn</span>
@@ -12414,22 +12414,22 @@ Logistic Regression I think is a good candidate because will help us to define a
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Training a GradientBoostingClassifier using a training set size of 100. . .
-Trained model in 0.0510 seconds
+Trained model in 0.0540 seconds
 Made predictions in 0.0000 seconds.
 F1 score for training set: 1.0000.
 Made predictions in 0.0000 seconds.
 F1 score for test set: 0.7519.
 ######
 Training a GradientBoostingClassifier using a training set size of 200. . .
-Trained model in 0.0810 seconds
-Made predictions in 0.0000 seconds.
+Trained model in 0.0760 seconds
+Made predictions in 0.0160 seconds.
 F1 score for training set: 0.9964.
 Made predictions in 0.0000 seconds.
 F1 score for test set: 0.7591.
 ######
 Training a GradientBoostingClassifier using a training set size of 300. . .
-Trained model in 0.1020 seconds
-Made predictions in 0.0020 seconds.
+Trained model in 0.1070 seconds
+Made predictions in 0.0010 seconds.
 F1 score for training set: 0.9739.
 Made predictions in 0.0000 seconds.
 F1 score for test set: 0.7794.
@@ -12449,7 +12449,7 @@ Made predictions in 0.0000 seconds.
 F1 score for test set: 0.7914.
 ######
 Training a LogisticRegression using a training set size of 300. . .
-Trained model in 0.0190 seconds
+Trained model in 0.0160 seconds
 Made predictions in 0.0000 seconds.
 F1 score for training set: 0.8468.
 Made predictions in 0.0000 seconds.
@@ -12463,22 +12463,22 @@ Made predictions in 0.0000 seconds.
 F1 score for test set: 0.7746.
 ######
 Training a SVC using a training set size of 200. . .
-Trained model in 0.0000 seconds
-Made predictions in 0.0150 seconds.
+Trained model in 0.0150 seconds
+Made predictions in 0.0000 seconds.
 F1 score for training set: 0.8679.
 Made predictions in 0.0000 seconds.
 F1 score for test set: 0.7815.
 ######
 Training a SVC using a training set size of 300. . .
-Trained model in 0.0000 seconds
-Made predictions in 0.0160 seconds.
+Trained model in 0.0160 seconds
+Made predictions in 0.0000 seconds.
 F1 score for training set: 0.8761.
 Made predictions in 0.0000 seconds.
 F1 score for test set: 0.7838.
 ######
 ######
 Training a LogisticRegression using a training set size of 300. . .
-Trained model in 0.0000 seconds
+Trained model in 0.0170 seconds
 Made predictions in 0.0000 seconds.
 F1 score for training set: 0.8468.
 Made predictions in 0.0000 seconds.
@@ -12694,7 +12694,7 @@ F1 score for test set: 0.8060.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Import &#39;GridSearchCV&#39; and &#39;make_scorer&#39;</span>
@@ -12703,7 +12703,11 @@ F1 score for test set: 0.8060.
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">make_scorer</span>
 
 <span class="c1"># TODO: Create the parameters list you wish to tune</span>
-<span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span> <span class="p">}</span>
+<span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">17</span><span class="p">),</span>
+    <span class="s1">&#39;penalty&#39;</span><span class="p">:[</span><span class="s1">&#39;l1&#39;</span><span class="p">,</span> <span class="s1">&#39;l2&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;class_weight&#39;</span><span class="p">:[</span><span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;balanced&#39;</span><span class="p">],</span>
+    <span class="p">}</span>
 
 <span class="c1"># TODO: Initialize the classifier</span>
 <span class="n">clf</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">LogisticRegression</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
@@ -12712,7 +12716,8 @@ F1 score for test set: 0.8060.
 <span class="n">f1_scorer</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">f1_score</span><span class="p">,</span> <span class="n">pos_label</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span><span class="p">)</span>
 
 <span class="c1"># TODO: Perform grid search on the classifier using the f1_scorer as the scoring method</span>
-<span class="n">grid_obj</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">f1_scorer</span><span class="p">)</span>
+<span class="n">grid_obj</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="n">f1_scorer</span><span class="p">,</span> 
+                        <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># TODO: Fit the grid search object to the training data and find the optimal parameters</span>
 <span class="n">grid_obj</span> <span class="o">=</span> <span class="n">grid_obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
@@ -12737,10 +12742,37 @@ F1 score for test set: 0.8060.
 <div class="prompt"></div>
 
 <div class="output_subarea output_stream output_stdout output_text">
+<pre>Fitting 5 folds for each of 68 candidates, totalling 340 fits
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>[Parallel(n_jobs=-1)]: Done  34 tasks      | elapsed:    3.8s
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
 <pre>Made predictions in 0.0000 seconds.
-Tuned model has a training F1 score of 0.8304.
-Made predictions in 0.0010 seconds.
-Tuned model has a testing F1 score of 0.7857.
+Tuned model has a training F1 score of 0.8323.
+Made predictions in 0.0000 seconds.
+Tuned model has a testing F1 score of 0.7891.
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>[Parallel(n_jobs=-1)]: Done 340 out of 340 | elapsed:    6.7s finished
 </pre>
 </div>
 </div>
@@ -12767,8 +12799,8 @@ Tuned model has a testing F1 score of 0.7857.
 <p><strong>Answer: </strong></p>
 <p><strong>What is the final model's F1 score for training and testing?</strong></p>
 <p><strong> Tuned Classifier</strong>
-F1 Score Training: 0.8304
-F1 Score Testing: 0.7857</p>
+F1 Score Training: 0.8323
+F1 Score Testing: 0.7891</p>
 <p><strong> Untuned Classifier </strong>
 F1 score for training: 0.8468
 F1 score for test: 0.8060</p>
